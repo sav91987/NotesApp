@@ -3,7 +3,7 @@ import text
 import json
 
 
-class PhoneBook:
+class Notes:
 
     def __init__(self):
         self.path = text.file_path

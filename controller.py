@@ -2,7 +2,7 @@ import view
 import model
 import text
 
-my_pb = model.PhoneBook()
+my_pb = model.Notes()
 
 
 def start():
