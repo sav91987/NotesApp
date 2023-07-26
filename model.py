@@ -73,5 +73,7 @@ class PhoneBook:
         self.phone_book.update(search_contact_list)
         
 
-    def del_contact(self, index_for_change):
-        self.phone_book.pop(index_for_change)
+    def del_contact(self, search_dict):
+        key = list(search_dict)
+        
+        self.phone_book.pop(key[0])

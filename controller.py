@@ -29,12 +29,14 @@ def start():
                 flag = 1
                 while flag:
                     if len(search_list) > 1:
+                        view.print_contact_list(search_list)
                         view.print_message(text.search_message)
                         search_list = my_pb.search_contact()
                     elif len(search_list) == 0:
                         view.print_message(text.search_fall)
                         search_list = my_pb.search_contact()
                     else:
+                        view.print_contact_list(search_list)
                         while flag:
                             input_value = view.change_contact_menu()
                             match input_value:
@@ -54,17 +56,19 @@ def start():
                                     view.print_message(text.succsesful_message)
                                     flag = 0
             case 5:
-                search_list, index_for_change = my_pb.search_contact()
+                search_list = my_pb.search_contact()
                 flag = 1
                 while flag:
                     if len(search_list) > 1:
+                        view.print_contact_list(search_list)
                         view.print_message(text.search_message)
-                        search_list, index_for_change = my_pb.search_contact()
+                        search_list = my_pb.search_contact()
                     elif len(search_list) == 0:
                         view.print_message(text.search_fall)
-                        search_list, index_for_change = my_pb.search_contact()
+                        search_list = my_pb.search_contact()
                     else:
-                        my_pb.del_contact(index_for_change[0])
+                        view.print_contact_list(search_list)
+                        my_pb.del_contact(search_list)
                         my_pb.save_contact()
                         view.print_message(text.succsesful_message)
 
