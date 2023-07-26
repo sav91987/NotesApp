@@ -41,13 +41,11 @@ def start():
                             input_value = view.change_notes_menu()
                             match input_value:
                                 case 1:
-                                    my_notes.change_note(
-                                        search_dict, input_value)
+                                    my_notes.change_note(search_dict, input_value)
                                     my_notes.save_note()
                                     view.print_message(text.succsesful_message)
                                 case 2:
-                                    my_notes.change_note(
-                                        search_dict, input_value)
+                                    my_notes.change_note(search_dict, input_value)
                                     my_notes.save_note()
                                     view.print_message(text.succsesful_message)
                                 case 3:
