@@ -2,74 +2,72 @@ import view
 import model
 import text
 
-my_pb = model.Notes()
+my_notes = model.Notes()
 
 
 def start():
-    pb = my_pb.get_contact_list()
+    notes = my_notes.get_notes_dict()
     while True:
         value = view.main_menu()
         match value:
             case 1:
-                view.print_contact_list(pb)
+                view.print_notes_dict(notes)
                 view.print_message(text.succsesful_message)
             case 2:
-                my_pb.add_contact()
-                my_pb.save_contact()
+                my_notes.add_note()
+                my_notes.save_note()
                 view.print_message(text.succsesful_message)
             case 3:
-                search_list = my_pb.search_contact()
-                if len(search_list) != 0:
-                    view.print_contact_list(search_list)
+                search_dict = my_notes.search_notes()
+                if len(search_dict) != 0:
+                    view.print_notes_dict(search_dict)
                     view.print_message(text.succsesful_message)
                 else:
                     view.print_message(text.search_fall)
             case 4:
-                search_list = my_pb.search_contact()
+                search_dict = my_notes.search_notes()
                 flag = 1
                 while flag:
-                    if len(search_list) > 1:
-                        view.print_contact_list(search_list)
+                    if len(search_dict) > 1:
+                        view.print_notes_dict(search_dict)
                         view.print_message(text.search_message)
-                        search_list = my_pb.search_contact()
-                    elif len(search_list) == 0:
+                        search_dict = my_notes.search_notes()
+                    elif len(search_dict) == 0:
                         view.print_message(text.search_fall)
-                        search_list = my_pb.search_contact()
+                        search_dict = my_notes.search_notes()
                     else:
-                        view.print_contact_list(search_list)
+                        view.print_notes_dict(search_dict)
                         while flag:
-                            input_value = view.change_contact_menu()
+                            input_value = view.change_notes_menu()
                             match input_value:
                                 case 1:
-                                    my_pb.change_contact(
-                                        search_list, input_value)
-                                    my_pb.save_contact()
+                                    my_notes.change_note(
+                                        search_dict, input_value)
+                                    my_notes.save_note()
                                     view.print_message(text.succsesful_message)
-                                    #search_list[0] = ch_contact
                                 case 2:
-                                    my_pb.change_contact(
-                                        search_list, input_value)
-                                    my_pb.save_contact()
+                                    my_notes.change_note(
+                                        search_dict, input_value)
+                                    my_notes.save_note()
                                     view.print_message(text.succsesful_message)
-                                    #search_list[0] = ch_contact
                                 case 3:
                                     view.print_message(text.succsesful_message)
                                     flag = 0
             case 5:
-                search_list = my_pb.search_contact()
+                search_dict = my_notes.search_notes()
                 flag = 1
                 while flag:
-                    if len(search_list) > 1:
-                        view.print_contact_list(search_list)
+                    if len(search_dict) > 1:
+                        view.print_notes_dict(search_dict)
                         view.print_message(text.search_message)
-                        search_list = my_pb.search_contact()
-                    elif len(search_list) == 0:
+                        search_dict = my_notes.search_notes()
+                    elif len(search_dict) == 0:
                         view.print_message(text.search_fall)
-                        search_list = my_pb.search_contact()
+                        search_dict = my_notes.search_notes()
                     else:
-                        view.print_contact_list(search_list)
-                        my_pb.del_contact(search_list)
-                        my_pb.save_contact()
+                        view.print_notes_dict(search_dict)
+                        my_notes.del_note(search_dict)
+                        my_notes.save_note()
                         view.print_message(text.succsesful_message)
 
                         flag = 0
